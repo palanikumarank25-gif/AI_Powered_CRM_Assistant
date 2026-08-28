@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AI-Powered CRM Assistant"
+    >
+
+    <title>AI CRM Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         APP
+    ====================================================== -->
+
+    <div class="app-container">
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    AI
+                </div>
+
+                <div>
+                    <h1>CRM Assistant</h1>
+                    <span>AI Sales Intelligence</span>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <p class="section-label">
+                    WORKSPACE
+                </p>
+
+                <button
+                    class="nav-item active"
+                    id="chatNav"
+                >
+                    <span class="nav-icon">💬</span>
+                    <span>AI Assistant</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    id="customersNav"
+                >
+                    <span class="nav-icon">👥</span>
+                    <span>Customers</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    id="dealsNav"
+                >
+                    <span class="nav-icon">💼</span>
+                    <span>Deals</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    id="analyticsNav"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Analytics</span>
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <p class="section-label">
+                    QUICK ACTIONS
+                </p>
+
+                <button
+                    class="quick-action"
+                    data-message="How many leads are currently in Contacted status?"
+                >
+                    <span>📈</span>
+                    Contacted leads
+                </button>
+
+                <button
+                    class="quick-action"
+                    data-message="Show me all deals worth over $10,000 that haven't been updated in 2 weeks."
+                >
+                    <span>⚠️</span>
+                    At-risk deals
+                </button>
+
+                <button
+                    class="quick-action"
+                    data-message="Show me the customer history for Acme Corp."
+                >
+                    <span>👤</span>
+                    Customer history
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>AI System Online</strong>
+                        <small>Gemini Connected</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h2>
+                        AI CRM Assistant
+                    </h2>
+
+                    <p>
+                        Ask questions or manage your CRM using natural language.
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <div class="api-status">
+
+                        <span class="status-dot"></span>
+
+                        API Connected
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 CHAT AREA
+            ================================================== -->
+
+            <section class="chat-wrapper">
+
+                <div
+                    class="chat-messages"
+                    id="chatMessages"
+                >
+
+                    <!-- Welcome message -->
+
+                    <div class="message assistant-message">
+
+                        <div class="avatar assistant-avatar">
+                            AI
+                        </div>
+
+                        <div class="message-content">
+
+                            <div class="message-header">
+                                <strong>CRM Assistant</strong>
+                                <span>Just now</span>
+                            </div>
+
+                            <div class="message-bubble">
+
+                                <p>
+                                    Hello! 👋 I'm your AI CRM Assistant.
+                                </p>
+
+                                <p>
+                                    I can help you search customers,
+                                    analyze deals, check lead status,
+                                    summarize customer history,
+                                    and more.
+                                </p>
+
+                                <p>
+                                    Try asking:
+                                </p>
+
+                                <div class="suggestion-list">
+
+                                    <button
+                                        class="suggestion"
+                                        data-message="How many leads are currently in Contacted status?"
+                                    >
+                                        How many Contacted leads?
+                                    </button>
+
+                                    <button
+                                        class="suggestion"
+                                        data-message="Show me all deals worth over $10,000 that haven't been updated in 2 weeks."
+                                    >
+                                        Show at-risk deals
+                                    </button>
+
+                                    <button
+                                        class="suggestion"
+                                        data-message="Summarize my conversation history with Acme Corp."
+                                    >
+                                        Summarize Acme Corp
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     TYPING INDICATOR
+                ================================================== -->
+
+                <div
+                    class="typing-container hidden"
+                    id="typingIndicator"
+                >
+
+                    <div class="avatar assistant-avatar">
+                        AI
+                    </div>
+
+                    <div class="typing-bubble">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     INPUT AREA
+                ================================================== -->
+
+                <div class="input-area">
+
+                    <div class="input-container">
+
+                        <textarea
+                            id="messageInput"
+                            placeholder="Ask anything about your CRM..."
+                            rows="1"
+                        ></textarea>
+
+
+                        <button
+                            id="sendButton"
+                            class="send-button"
+                            title="Send message"
+                        >
+
+                            <span>➤</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="input-footer">
+
+                        <span>
+                            AI responses are grounded in your CRM data.
+                        </span>
+
+                        <span>
+                            Press Enter to send
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
